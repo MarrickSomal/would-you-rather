@@ -4,7 +4,11 @@ import React, { Component } from 'react';
 class LeaderBoard extends Component {
 
     render() {
-        return (this.prop)
+        return (
+            <div>
+                Mapping of leaderboard data
+            </div>
+        )
     }
 }
 

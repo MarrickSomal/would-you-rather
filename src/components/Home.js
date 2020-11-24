@@ -6,9 +6,9 @@ class Home extends Component {
 
     render() {
         return (
-                <UserCard>
-
-                </UserCard>
+            <div>
+                <UserCard />
+            </div>    
         );
     }
 }
