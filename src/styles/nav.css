@@ -1,3 +1,35 @@
+
 .navigation-links{
-    display: flex
+    display: flex;
+    list-style: none;
+    margin: 0.5em;
 }
+
+li > a {
+    color: rgba(0,0,0,.95);
+    margin: 0 1em;
+    text-decoration: none;
+    box-shadow: none;
+}
+
+.active{
+    font-weight: 700;
+  }
+
+  .navigation-username{
+      color:  rgba(0,0,0,.95);
+      font-weight: 400;
+  }
+
+  button{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  }
+
+  .right-menu{
+      flex-grow: 0.9;
+  }
+
+  .navigation-username{
+      margin-left: 1em;
+      margin-right: 1em;
+  }
