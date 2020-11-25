@@ -1,4 +1,4 @@
-.newpoll{
+.home-container{
     width: 100%;
     max-width: 516px;
     margin: auto;
@@ -6,8 +6,4 @@
     top: 45%;
     left: 50%;
     transform: translate(-50%,-50%);
-  }
-
-.or-divider{
-   text-align: center;
 }

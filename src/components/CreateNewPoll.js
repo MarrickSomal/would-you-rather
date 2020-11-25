@@ -28,14 +28,15 @@ class CreateNewPoll extends Component {
                             <strong>Would you rather...</strong>
                         </p>
                         <form >
-                        <TextField fullWidth label="Option one" placeholder ="Enter option one..." variant="outlined"/> 
-                        <br/>OR<br/>
+                        <TextField fullWidth label="Option one" placeholder ="Enter option one..." variant="outlined"/>
+                            <p className="or-divider">
+                            OR
+                            </p>
                         <TextField fullWidth label="Option two" placeholder ="Enter option two..." variant="outlined"/>
                         </form>
                     </CardContent>
                     <CardActions>
-                        <Button 
-                        className="submit-button"
+                        <Button
                         color="secondary"
                         fullWidth
                         style={{

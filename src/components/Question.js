@@ -22,7 +22,6 @@ class Question extends Component {
                         Hello World
                     </Button>
                 </FormControl>
-
             </div>
           </div>
         )
