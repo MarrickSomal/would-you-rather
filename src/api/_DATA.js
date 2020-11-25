@@ -2,7 +2,7 @@ let users = {
     sarah: {
       id: 'sarah',
       name: 'Sarah',
-      avatarURL: '/images/avatars/panda.png',
+      avatarURL: '/images/panda.png',
       answers: {
         "8xf0y6ziyjabvozdd253nd": 'optionOne',
         "6ni6ok3ym7mf1p33lnez": 'optionTwo',
@@ -14,7 +14,7 @@ let users = {
     tyler: {
       id: 'tyler',
       name: 'Tyler',
-      avatarURL: '/images/avatars/racoon.png',
+      avatarURL: '/images/racoon.png',
       answers: {
         "vthrdm985a262al8qx3do": 'optionOne',
         "xj352vofupe1dqz9emx13r": 'optionTwo',
@@ -24,7 +24,7 @@ let users = {
     john: {
       id: 'john',
       name: 'john',
-      avatarURL: '/images/avatars/cat.png',
+      avatarURL: '/images/cat.png',
       answers: {
         "xj352vofupe1dqz9emx13r": 'optionOne',
         "vthrdm985a262al8qx3do": 'optionTwo',
