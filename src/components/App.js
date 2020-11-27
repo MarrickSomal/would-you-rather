@@ -1,5 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import {Route, Switch } from 'react-router-dom';
+import { handleInitialData } from '../actions/shared';
+import { connect } from 'react-redux';
+
 import Login from './Login';
 import Nav from './Nav';
 import Home from './Home';
@@ -22,6 +25,9 @@ const Container =
 
 class App extends Component {
 
+  componentDidMount() {
+    this.props.dispatch(handleInitialData())
+  }
   
   render() {
 
@@ -56,4 +62,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect()(App);
