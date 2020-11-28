@@ -31,11 +31,13 @@ class App extends Component {
   
   render() {
 
-    const { authenticatedUser } = this.props;
+    const { authedUser } = this.props;
     return (
       <Route>
         <div className="App">
-          {authenticatedUser === null ? (
+          {/*if an authenticated User has not been selected show the Login screen, 
+          else show the Home screen*/}
+          {authedUser === null ? (
             <Route
               render={() => (
                 <Container>
@@ -62,4 +64,19 @@ class App extends Component {
   }
 }
 
-export default connect()(App);
+/* authedUser state, from the store, is passed
+as a parameter to allow authedUser to be used 
+as a property by the App component */
+
+function mapStateToProps({ authedUser }) {
+  return {
+    authedUser
+  };
+}
+
+/*Call mapStateToProps function every time the 
+store state changes and returns authedUser 
+data to the App component, to check if the user is still logged in 
+and hence which components to show the user */
+
+export default connect(mapStateToProps)(App);
