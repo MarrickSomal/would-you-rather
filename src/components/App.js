@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import {Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { handleInitialData } from '../actions/shared';
 import { connect } from 'react-redux';
 
@@ -13,15 +13,9 @@ import PageNotFound from './PageNotFound';
 
 import Grid from '@material-ui/core/Grid';
 
+import '../styles/App.css'
 
-const Container =
 
-  <Grid container
-    direction="column"
-    justify="center"
-    alignItems="center"
-  >
-  </Grid>;
 
 class App extends Component {
 
@@ -33,16 +27,17 @@ class App extends Component {
 
     const { authedUser } = this.props;
     return (
-      <Route>
+      <Router>
         <div className="App">
           {/*if an authenticated User has not been selected show the Login screen, 
           else show the Home screen*/}
           {authedUser === null ? (
             <Route
               render={() => (
-                <Container>
-                    <Login />
-                </Container>
+                <Grid className="login-container"
+              >
+                <Login />
+              </Grid>
               )}
             />
           ) : (
@@ -58,8 +53,8 @@ class App extends Component {
               </Switch>
             </Fragment>
           )}
-          </div>
-      </Route>
+          </div>         
+      </Router>
     );
   }
 }
@@ -71,7 +66,7 @@ as a property by the App component */
 function mapStateToProps({ authedUser }) {
   return {
     authedUser
-  };
+  }
 }
 
 /*Call mapStateToProps function every time the 
