@@ -23,7 +23,7 @@ let users = {
     },
     john: {
       id: 'john',
-      name: 'john',
+      name: 'John',
       avatarURL: '/images/cat.png',
       answers: {
         "xj352vofupe1dqz9emx13r": 'optionOne',
