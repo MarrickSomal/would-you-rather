@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { setAuthedUser } from '../actions/authedUser';
 import { NavLink } from 'react-router-dom';
 
 import AppBar from '@material-ui/core/AppBar'
@@ -11,7 +13,21 @@ import '../styles/nav.css'
 
 class Nav extends Component {
 
+    /*When the user clicks on the Logout button handleLogout is invoked.
+    handleLogout dispatches the setAuthedUser action which sets the authedUser to null
+    according to the App.js code, when authedUser is set to null the Login screen shows,
+    hence the user has been logged out  */
+
+    handleLogout = e => {
+        e.preventDefault();
+        this.props.dispatch(setAuthedUser(null));
+      };
+    
     render() {
+
+        const { authedUser, users } = this.props;
+
+
         return (
             <div>
                 {/* the Toolbar component is nested inside the AppBar component 
@@ -24,13 +40,20 @@ class Nav extends Component {
                             <li><NavLink to="/leaderboard" >Leader Board</NavLink></li>
                         </ul>
                         <div className="right-menu"> </div>
-                        <Avatar/>
+                        <span>
+                            <Avatar
+                            alt={users[authedUser].name}
+                            src={users[authedUser].avatarURL}
+                            size={100}
+                            />
+                        </span>
                         <p className="navigation-username">
-                            John Smith
+                        {users[authedUser].name}
                         </p>
                         <Button
-                            style={{textTransform: 'none'}}
                             endIcon={<ExitAppIcon/>}
+                            onClick={this.handleLogout}
+                            style={{textTransform: 'none'}}
                         >
                             Logout
                         </Button>
@@ -41,4 +64,11 @@ class Nav extends Component {
     }
 }
 
-export default Nav;
+function mapStateToProps({ authedUser, users }) {
+    return {
+      authedUser,
+      users
+    };
+  }
+
+export default connect(mapStateToProps)(Nav);
