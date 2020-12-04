@@ -6,10 +6,11 @@ import { connect } from 'react-redux';
 import Login from './Login';
 import Nav from './Nav';
 import Home from './Home';
-import UserCard from './UserCard';
+import Result from './Result';
 import CreateNewPoll from './CreateNewPoll';
 import Leaderboard from './Leaderboard';
 import PageNotFound from './PageNotFound';
+import Question from './Question';
 
 import Grid from '@material-ui/core/Grid';
 
@@ -48,7 +49,8 @@ class App extends Component {
                 <Route exact path="/" component={Home} />
                 <Route path="/leaderboard" component={Leaderboard} />
                 <Route path="/questions/bad_id" component={PageNotFound} />
-                <Route path="/questions/:question_id" component={UserCard} />
+                <Route path="/question/:id/result" component={Result} />
+                <Route path="/question/:id" component={Question} />
                 <Route component={PageNotFound} />
               </Switch>
             </Fragment>

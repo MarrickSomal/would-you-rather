@@ -1,22 +1,42 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 
 import Button from '@material-ui/core/Button';
-import Card from '@material-ui/core/Card';
+
+import '../styles/pollpreview.css'
 
 class PollPreview extends Component {
 
     render() {
+
+      const { question, unansweredPolls } = this.props;
+      const buttonName = unansweredPolls === true ? 'Answer Poll' : 'Results'
+      const buttonLink = unansweredPolls === true ? '/question/'+question.id : '/question/'+question.id+'/result'
+
         return (
-            <Card>
+          <div>
             <h5>Would you rather</h5>
-            <p style={{ textAlign: 'center' }}>
-               Question 1
+            <p>
+            {question.optionOne.text}
               <br />
               or...
             </p>
+            <Link 
+            to={buttonLink}
+            style={{ textDecoration: 'none' }}
+            >
             <Button
-            />
-          </Card>
+            color="secondary"
+            style={{
+                textTransform: 'none',
+                backgroundColor: "#21b6ae",
+            }}
+            variant="contained"
+            >
+            {buttonName}
+            </Button>
+            </Link>
+          </div>
         );
     }
 }
