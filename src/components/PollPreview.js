@@ -8,11 +8,11 @@ import '../styles/pollpreview.css'
 class PollPreview extends Component {
 
     render() {
-
+      
       const { question, unansweredPolls } = this.props;
-      const buttonName = unansweredPolls === true ? 'Answer Poll' : 'Results'
-      const buttonLink = unansweredPolls === true ? '/question/'+question.id : '/question/'+question.id+'/result'
-
+      const buttonName = unansweredPolls === true ? 'Answer Poll' : 'Results';
+      const buttonLink = unansweredPolls === true ? '/question/'+question.id : '/question/'+question.id+'/result';
+      
         return (
           <div>
             <h5>Would you rather</h5>
@@ -22,7 +22,12 @@ class PollPreview extends Component {
               or...
             </p>
             <Link 
-            to={buttonLink}
+            to={{
+              pathname: `${buttonLink}`,
+              state: {
+                question,
+              }
+            }}
             style={{ textDecoration: 'none' }}
             >
             <Button

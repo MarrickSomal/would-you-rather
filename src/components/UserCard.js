@@ -7,8 +7,6 @@ import Card from '@material-ui/core/Card';
 import { makeStyles } from '@material-ui/core/styles';
 import CardContent from '@material-ui/core/CardContent';
 
-import '../styles/usercard.css'
-
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
