@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { handleSaveQuestionAnswer } from '../actions/questions';
+import {Link} from 'react-router-dom';
 
 import Button from '@material-ui/core/Button'
 import FormControl from '@material-ui/core/FormControl'
@@ -36,6 +37,7 @@ class Question extends Component {
     render() {
         const { question } = this.props.location.state;
         const disabled = this.state.value === '' ? true : false;
+        const submitLink = '/question/'+question.id+'/result';
 
         return (
             <div className="question">
@@ -46,7 +48,15 @@ class Question extends Component {
                     <RadioGroup value={this.state.value} onChange={this.handleChange}>
                         <FormControlLabel value="optionOne" control={<Radio />} label={question.optionOne.text} />
                         <FormControlLabel value="optionTwo" control={<Radio />} label={question.optionTwo.text} />
-                    </RadioGroup>                
+                    </RadioGroup>
+                    <Link 
+                    to={{
+                      pathname: `${submitLink}`,
+                      state: {
+                        question,
+                      }
+                    }}
+                    >
                     <Button 
                       className="submit-button"
                       type="submit"
@@ -57,6 +67,7 @@ class Question extends Component {
                     >
                       Submit
                     </Button>
+                    </Link>  
                 </FormControl>
                 </form>
             </div>
