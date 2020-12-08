@@ -9,7 +9,7 @@ class PollPreview extends Component {
 
     render() {
       
-      const { question, unansweredPolls } = this.props;
+      const { author, question, unansweredPolls } = this.props;
       const buttonName = unansweredPolls === true ? 'Answer Poll' : 'Results';
       const buttonLink = unansweredPolls === true ? '/question/'+question.id : '/question/'+question.id+'/result';
       
@@ -25,6 +25,7 @@ class PollPreview extends Component {
             to={{
               pathname: `${buttonLink}`,
               state: {
+                author,
                 question,
               }
             }}

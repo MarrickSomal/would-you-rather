@@ -1,34 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PollPreview from './PollPreview';
+import {useStyles} from '../styles/sharedStyles';
 
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
-import { makeStyles } from '@material-ui/core/styles';
 import CardContent from '@material-ui/core/CardContent';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-    padding: "10px",
-  },
 
-  card: {
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-    margin: 25,
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center"
-  },
-
-  header: {
-    fontSize: "1.25em",
-    backgroundColor: "#f3f4f5",
-    padding: "1em",
-  },
-
-}));
 
 function UserCard(props) {
   const classes = useStyles();
@@ -56,6 +35,7 @@ function UserCard(props) {
                 <PollPreview
                 question={question}
                 unansweredPolls={unansweredPolls}
+                author={author}
                 />
               </CardContent>
             </Grid>
