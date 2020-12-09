@@ -1,7 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-
-const useStyles = makeStyles((theme) => ({
+export const useStyles = makeStyles((theme) => ({
     root: {
       flexGrow: 1,
       padding: "10px",
@@ -10,9 +9,9 @@ const useStyles = makeStyles((theme) => ({
     card: {
       textAlign: 'center',
       color: theme.palette.text.secondary,
-      margin: 25,
-      maxWidth: "xs",
-      display: "flex",
+      margin: 33,
+      maxWidth: 300,
+      display: "inline-block",
       flexDirection: "column",
       justifyContent: "center"
     },
@@ -22,20 +21,34 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: "#f3f4f5",
       padding: "1em",
     },
-
     toolbar: {
-        width: "800px" ,
-        justifyContent: 'flex-end',
-        alignContent:"center",
-        margin: "auto",
-        padding: '8px',
-        ...theme.mixins.toolbar,
-      },
-
-    progressbar: {
-      barColorSecondary: "black"
+      width: "800px" ,
+      justifyContent: 'flex-end',
+      alignContent:"center",
+      margin: "auto",
+      padding: '8px',
+      ...theme.mixins.toolbar,
     },
 
-  }));
+    tabLabel: {
+      textTransform: 'none',
+      fontSize: '1.3em'
+    },
 
-  export { useStyles };
+    indicator: {
+        backgroundColor: "rgb(33, 182, 174)",
+        height: "10px",
+        top: "44px",
+    },
+
+    userSelected: {
+      background: "rgb(215, 260, 200)",
+      border: "1px solid",
+      borderColor: "rgb(33, 182, 174)",
+      borderRadius: "6px",
+      color: "rgb(0, 70, 50)",
+      margin:"auto",
+      padding: "0.4em",
+    },
+
+  }))

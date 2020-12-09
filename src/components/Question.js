@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { handleSaveQuestionAnswer } from '../actions/questions';
 import { withRouter } from 'react-router-dom';
-import {useStyles} from '../styles/sharedStyles';
 
 import Button from '@material-ui/core/Button'
 import FormControl from '@material-ui/core/FormControl'
@@ -13,6 +12,7 @@ import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 
+import {useStyles} from '../styles/sharedStyles';
 
 function Question (props) {
     const classes = useStyles();
@@ -31,14 +31,13 @@ function Question (props) {
           const { question } = props.location.state;
           props.dispatch(handleSaveQuestionAnswer( authedUser, question.id, value ));
           props.history.push({
+            state: { author, question },
             pathname: `/question/${question.id}/result`,
-            state: { author, question }
           })
         }
       };
 
         const { author, question } = props.location.state;
-        console.log(author.name)
         const disabled = value === '' ? true : false
 
         return (
@@ -88,10 +87,10 @@ function Question (props) {
         )
     }
 
-function mapStateToProps({ authedUser }, {questionId}) {
-
-
-    return {
+function mapStateToProps({ authedUser }) {
+    
+  
+  return {
       authedUser
     };
   }

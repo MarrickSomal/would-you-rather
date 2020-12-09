@@ -1,20 +1,25 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import {useStyles} from '../styles/sharedStyles';
 
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-import LinearProgress from '@material-ui/core/LinearProgress'
+import LinearProgress from '@material-ui/core/LinearProgress';
+
+import {useStyles} from '../styles/sharedStyles';
+
 
 function Result(props) {
   const classes = useStyles();
 
+      const { user } = props;
       const { author, question } = props.location.state;
+      
       const optionOneVotes = question.optionOne.votes.length;
       const optionTwoVotes = question.optionTwo.votes.length;
       const totalVotes = optionOneVotes + optionTwoVotes;
+      const userVote = user.answers[question.id];
 
       const optionOnePercent= ((optionOneVotes/totalVotes)*100).toFixed(1)
       const optionTwoPercent= ((optionTwoVotes/totalVotes)*100).toFixed(1)
@@ -39,14 +44,14 @@ function Result(props) {
                 </Grid>
                 <Grid item xs = {6} className={classes.card}>
                   <CardContent>
-                  <div>
+                  <div className={userVote === 'optionOne' ? classes.userSelected: null}>
                     <p>{question.optionOne.text}</p>
                     <LinearProgress color="primary" value={Number(optionOnePercent)} variant="determinate"/>
                     <h3> {optionOneVotes} out of {totalVotes} votes, {optionOnePercent}%</h3>
                   </div>
-                  <div>
+                  <div className={userVote === 'optionTwo' ? classes.userSelected: null}>
                     <p>{question.optionTwo.text}</p>
-                    <LinearProgress color="secondary" value={Number(optionTwoPercent)} variant="determinate" />
+                    <LinearProgress color="primary" value={Number(optionTwoPercent)} variant="determinate" />
                     <h3>{optionTwoVotes} out of {totalVotes} votes, {optionTwoPercent}%</h3>
                   </div>
                   </CardContent>
@@ -58,5 +63,11 @@ function Result(props) {
         );
     }
 
+    function mapStateToProps({ users, authedUser }) {
+      const user = users[authedUser];
+      return {
+        user
+      };
+    }
 
-export default withRouter(connect()(Result));
+export default withRouter(connect(mapStateToProps)(Result));

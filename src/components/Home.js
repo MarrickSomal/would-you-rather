@@ -1,38 +1,15 @@
 import React from 'react';
 import UserCard from './UserCard';
 import {connect} from 'react-redux';
-import { makeStyles } from '@material-ui/core/styles';
 
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
 
-const useStyles = makeStyles(theme => ({
-  toolbar: {
-    width: "800px" ,
-    justifyContent: 'flex-end',
-    alignContent:"center",
-    margin: "auto",
-    padding: '8px',
-    ...theme.mixins.toolbar,
-  },
-
-  tabIndicator: {
-    backgroundColor: "rgb(33, 182, 174)",
-    height: "10px",
-    top: "45px"
-  },
-
-  tabLabel: {
-    textTransform: 'none',
-    fontSize: '1.3em'
-  }
-  
-}));
+import {useStyles} from '../styles/sharedStyles';
 
 function Home(props) {
-
-  const classes = useStyles();
+const classes = useStyles();
 
   const [value, setValue] = React.useState(0);
 
@@ -48,7 +25,7 @@ function Home(props) {
               onChange={handleChange} 
               value={value}
               variant="fullWidth"
-              TabIndicatorProps={{ className: classes.tabIndicator }}
+              classes={{ indicator: classes.indicator}}
               >
                 <Tab 
                 label={<span className={classes.tabLabel}>Answered</span>}

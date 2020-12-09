@@ -67,7 +67,7 @@ as a property by the App component */
 
 function mapStateToProps({ authedUser }) {
   return {
-    authedUser
+    authedUser,
   }
 }
 
