@@ -1,4 +1,4 @@
-import { addAnswerToUser } from '../actions/users';
+import { addAnswerToUser, addQuestionToUser  } from '../actions/users';
 import {_saveQuestion,_saveQuestionAnswer} from '../utils/_DATA';
 
 //Action type
@@ -7,6 +7,13 @@ export const CREATE_ANSWER_TO_QUESTION = 'CREATE_ANSWER_TO_QUESTION';
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS';
 
 //Action creator
+function createQuestion(question) {
+  return {
+    type: CREATE_QUESTION,
+    question
+  };
+}
+
 export function receiveQuestions(questions) {
     return {
       type: RECEIVE_QUESTIONS,
@@ -31,6 +38,17 @@ export function saveQuestionAnswer(authedUser, qid, answer) {
   return _saveQuestionAnswer({ authedUser, qid, answer });
 }
 
+export function handleSaveQuestion(optionOneText, optionTwoText, author) {
+  return dispatch => {
+    return saveQuestion({ optionOneText, optionTwoText, author }).then(
+      question => {
+        dispatch(createQuestion(question));
+        dispatch(addQuestionToUser(question));
+      }
+    );
+  };
+}
+
 export function handleSaveQuestionAnswer(authedUser, qid, answer) {
   return dispatch => {
     dispatch(addAnswerToUser(authedUser, qid, answer));
@@ -41,6 +59,8 @@ export function handleSaveQuestionAnswer(authedUser, qid, answer) {
     });
   };
 }
+
+
 
 
 
