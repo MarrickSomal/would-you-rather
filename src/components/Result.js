@@ -13,11 +13,11 @@ import {useStyles} from '../styles/sharedStyles';
 function Result(props) {
   const classes = useStyles();
 
-      const { user } = props;
+      const { user, questions } = props;
       const { author, question } = props.location.state;
       
-      const optionOneVotes = question.optionOne.votes.length;
-      const optionTwoVotes = question.optionTwo.votes.length;
+      const optionOneVotes = questions[question.id].optionOne.votes.length;
+      const optionTwoVotes = questions[question.id].optionTwo.votes.length;
       const totalVotes = optionOneVotes + optionTwoVotes;
       const userVote = user.answers[question.id];
 
@@ -63,10 +63,11 @@ function Result(props) {
         );
     }
 
-    function mapStateToProps({ users, authedUser }) {
+    function mapStateToProps({ users, authedUser, questions }) {
       const user = users[authedUser];
       return {
-        user
+        questions,
+        user,
       };
     }
 
