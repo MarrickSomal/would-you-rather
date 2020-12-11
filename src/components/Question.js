@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { handleSaveQuestionAnswer } from '../actions/questions';
-import { withRouter } from 'react-router-dom';
 
 import Button from '@material-ui/core/Button'
 import FormControl from '@material-ui/core/FormControl'
@@ -95,4 +94,4 @@ function mapStateToProps({ authedUser }) {
     };
   }
 
-export default withRouter(connect(mapStateToProps)(Question));
+export default connect(mapStateToProps)(Question);

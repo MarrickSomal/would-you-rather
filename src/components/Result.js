@@ -1,5 +1,4 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import Grid from '@material-ui/core/Grid';
@@ -71,4 +70,4 @@ function Result(props) {
       };
     }
 
-export default withRouter(connect(mapStateToProps)(Result));
+export default connect(mapStateToProps)(Result);
