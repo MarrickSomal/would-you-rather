@@ -36,7 +36,7 @@ class Nav extends Component {
                     <Toolbar>
                         <ul className = "navigation-links">
                             <li><NavLink exact to="/" >Home</NavLink></li>
-                            <li><NavLink to="/newpoll" >New Poll</NavLink></li>
+                            <li><NavLink to="/add" >New Poll</NavLink></li>
                             <li><NavLink to="/leaderboard" >Leader Board</NavLink></li>
                         </ul>
                         <div className="right-menu"> </div>

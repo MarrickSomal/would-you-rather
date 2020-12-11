@@ -35,12 +35,6 @@ export const useStyles = makeStyles((theme) => ({
       fontSize: '1.3em'
     },
 
-    indicator: {
-        backgroundColor: "rgb(33, 182, 174)",
-        height: "10px",
-        top: "44px",
-    },
-
     userSelected: {
       background: "rgb(215, 260, 200)",
       border: "1px solid",

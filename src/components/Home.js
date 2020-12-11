@@ -25,32 +25,38 @@ const classes = useStyles();
               onChange={handleChange} 
               value={value}
               variant="fullWidth"
-              classes={{ indicator: classes.indicator}}
+              TabIndicatorProps={{
+                style:{
+                  backgroundColor: "rgb(33, 182, 174)",
+                  height: "10px",
+                  top: "44px",
+                }
+                }}
               >
                 <Tab 
-                label={<span className={classes.tabLabel}>Answered</span>}
+                label={<span className={classes.tabLabel}>Unanswered</span>}
                 index={0}  
                 />
                 <Tab
-                label={<span className={classes.tabLabel}>Unanswered</span>}
+                label={<span className={classes.tabLabel}>Answered</span>}
                 index={1}  
                 />
               </Tabs>
                 <TabPanel label="Unanswered" value={value} index={0}>
-                {userPollData.unansweredPolls.map((question) => (
-                <UserCard 
-                key={question.id}
-                questionId={question.id}
-                unansweredPolls={false}
-                />
-                ))}
-                </TabPanel>
-                <TabPanel label="Answered" value={value} index={1}>
                 {userPollData.answeredPolls.map((question) => (
                 <UserCard 
                 key={question.id}
                 questionId={question.id}
                 unansweredPolls={true}
+                />
+                ))}
+                </TabPanel>
+                <TabPanel label="Answered" value={value} index={1}>
+                {userPollData.unansweredPolls.map((question) => (
+                <UserCard 
+                key={question.id}
+                questionId={question.id}
+                unansweredPolls={false}
                 />
                 ))}
                 </TabPanel>

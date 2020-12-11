@@ -45,10 +45,9 @@ class App extends Component {
             <Fragment>
               <Nav/>
               <Switch>
-                <Route path="/newpoll" component={CreateNewPoll} />
+                <Route path="/add" component={CreateNewPoll} />
                 <Route exact path="/" component={Home} />
                 <Route path="/leaderboard" component={Leaderboard} />
-                <Route path="/questions/bad_id" component={PageNotFound} />
                 <Route path="/question/:id/result" component={Result} />
                 <Route path="/question/:id" component={Question} />
                 <Route component={PageNotFound} />
