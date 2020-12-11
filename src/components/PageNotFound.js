@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Card from '@material-ui/core/Card'
 
 
-class NotFound extends Component {
+class PageNotFound extends Component {
 
     render() {
         return (
@@ -16,4 +16,4 @@ class NotFound extends Component {
     }
 }
 
-export default NotFound;
+export default PageNotFound;
