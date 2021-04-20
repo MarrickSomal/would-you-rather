@@ -21,12 +21,12 @@ function UserCard(props) {
                 {author.name} asks:
              </div>
         <Grid container>
-            <Grid item xs={4} className={classes.card}>
+            <Grid item xs={6} className={classes.card}>
               <CardContent>
                  <img alt=""
                  src={author.avatarURL}
-                 width="300" 
-                 height="300"
+                 width="119" 
+                 height="119"
                  />
                 </CardContent>
             </Grid>

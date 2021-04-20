@@ -2,16 +2,13 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export const useStyles = makeStyles((theme) => ({
     root: {
-      flexGrow: 1,
       padding: "10px",
     },
   
     card: {
       textAlign: 'center',
       color: theme.palette.text.secondary,
-      margin: 33,
-      maxWidth: 300,
-      display: "inline-block",
+      display: "flex",
       flexDirection: "column",
       justifyContent: "center"
     },
@@ -22,7 +19,7 @@ export const useStyles = makeStyles((theme) => ({
       padding: "1em",
     },
     toolbar: {
-      width: "800px" ,
+      maxWidth: "600px" ,
       justifyContent: 'flex-end',
       alignContent:"center",
       margin: "auto",
