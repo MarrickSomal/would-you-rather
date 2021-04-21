@@ -14,18 +14,14 @@ import Question from './Question';
 
 import Grid from '@material-ui/core/Grid';
 
-import '../styles/App.css'
-
-
+import '../styles/App.css';
 
 class App extends Component {
-
   componentDidMount() {
-    this.props.dispatch(handleInitialData())
+    this.props.dispatch(handleInitialData());
   }
-  
-  render() {
 
+  render() {
     const { authedUser } = this.props;
     return (
       <Router>
@@ -35,15 +31,14 @@ class App extends Component {
           {authedUser === null ? (
             <Route
               render={() => (
-                <Grid className="login-container"
-              >
-                <Login />
-              </Grid>
+                <Grid className="login-container">
+                  <Login />
+                </Grid>
               )}
             />
           ) : (
             <Fragment>
-              <Nav/>
+              <Nav />
               <Switch>
                 <Route path="/add" component={CreateNewPoll} />
                 <Route exact path="/" component={Home} />
@@ -54,7 +49,7 @@ class App extends Component {
               </Switch>
             </Fragment>
           )}
-          </div>         
+        </div>
       </Router>
     );
   }
@@ -67,7 +62,7 @@ as a property by the App component */
 function mapStateToProps({ authedUser }) {
   return {
     authedUser,
-  }
+  };
 }
 
 /*Call mapStateToProps function every time the 

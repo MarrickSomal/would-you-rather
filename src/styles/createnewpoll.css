@@ -1,13 +1,13 @@
-.newpoll{
-    width: 100%;
-    max-width: 516px;
-    margin: auto;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-  }
+.newpoll {
+  width: 100%;
+  max-width: 516px;
+  margin: auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
-.or-divider{
-   text-align: center;
+.or-divider {
+  text-align: center;
 }

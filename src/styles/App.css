@@ -28,9 +28,9 @@
   color: #61dafb;
 }
 
-.login-container{
+.login-container {
   direction: column;
-  alignContent: center;
+  aligncontent: center;
 }
 
 @keyframes App-logo-spin {

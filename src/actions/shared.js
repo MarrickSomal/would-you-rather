@@ -2,7 +2,6 @@ import { getInitialData } from '../utils/api';
 import { receiveQuestions } from '../actions/questions';
 import { receiveUsers } from '../actions/users';
 
-
 /*
 The function uses the Redux return pattern, to allow an asynchronous request 
 to be made inside the function.
@@ -18,10 +17,9 @@ via the action creators receiveQuestions and receiveUsers.
 
 export function handleInitialData() {
   return (dispatch) => {
-    return getInitialData()
-        .then(({ users, questions }) => {
-        dispatch(receiveQuestions(questions));
-        dispatch(receiveUsers(users));
+    return getInitialData().then(({ users, questions }) => {
+      dispatch(receiveQuestions(questions));
+      dispatch(receiveUsers(users));
     });
   };
 }

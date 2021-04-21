@@ -1,4 +1,4 @@
-import { 
+import {
   RECEIVE_QUESTIONS,
   CREATE_ANSWER_TO_QUESTION,
   CREATE_QUESTION,
@@ -6,11 +6,11 @@ import {
 
 export default function questions(state = {}, action) {
   switch (action.type) {
-      /*Any received questions are merged onto the new below object */
+    /*Any received questions are merged onto the new below object */
     case RECEIVE_QUESTIONS:
       return {
         ...state,
-        ...action.questions
+        ...action.questions,
       };
 
     case CREATE_ANSWER_TO_QUESTION:
@@ -22,9 +22,9 @@ export default function questions(state = {}, action) {
           ...state[qid],
           [answer]: {
             ...state[qid][answer],
-            votes: state[qid][answer].votes.concat(authedUser)
-          }
-        }
+            votes: state[qid][answer].votes.concat(authedUser),
+          },
+        },
       };
 
     case CREATE_QUESTION:
@@ -32,9 +32,9 @@ export default function questions(state = {}, action) {
 
       return {
         ...state,
-        [question.id]: question
+        [question.id]: question,
       };
-        /*If none of the cases match we return the state that was passed in */
+    /*If none of the cases match we return the state that was passed in */
     default:
       return state;
   }
