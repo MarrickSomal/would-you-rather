@@ -15,6 +15,7 @@ function Home(props) {
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+    console.log(userPollData.unansweredPolls)
   };
 
   const { userPollData } = props;
@@ -43,9 +44,17 @@ function Home(props) {
         ))}
       </TabPanel>
       <TabPanel label="Answered" value={value} index={1}>
-        {userPollData.unansweredPolls.map((question) => (
+        {(userPollData.unansweredPolls.length===0)?
+        <div className={classes.noAnswersText}>
+          You haven't answered any questions yet! 
+        </div>
+        :
+        <div>
+          {userPollData.unansweredPolls.map((question) => (
           <UserCard key={question.id} questionId={question.id} unansweredPolls={false} />
         ))}
+        </div>
+      }
       </TabPanel>
     </div>
   );

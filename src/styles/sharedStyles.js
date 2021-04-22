@@ -32,6 +32,12 @@ export const useStyles = makeStyles((theme) => ({
     textAlign: 'left',
   },
 
+  noAnswersText: {
+    color: 'white',
+    fontSize: '1.25em',
+    paddingTop: '100px',
+  },
+
   submitButton: {
     backgroundColor: '#043d6c',
     color: "white",
