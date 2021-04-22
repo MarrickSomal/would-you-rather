@@ -13,11 +13,10 @@ function Leaderboard(props) {
   const { userData } = props;
 
   return (
-    <div className={classes.toolbar}>
       <div className={classes.root}>
         {userData.map((user, ix) => {
           return (
-            <Card key={user.id}>
+            <Card key={user.id} className={classes.cardSpacing}>
               <div className={classes.header}>
                 {ix + 1}. {user.name}
               </div>
@@ -39,7 +38,6 @@ function Leaderboard(props) {
           );
         })}
       </div>
-    </div>
   );
 }
 

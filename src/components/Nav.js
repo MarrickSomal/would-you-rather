@@ -9,7 +9,8 @@ import Button from '@material-ui/core/Button';
 import Toolbar from '@material-ui/core/Toolbar';
 import ExitAppIcon from '@material-ui/icons/ExitToApp';
 
-import '../styles/nav.css';
+import { withStyles } from '@material-ui/core/styles';
+import {styles} from '../styles/Nav';
 
 class Nav extends Component {
   /*When the user clicks on the Logout button handleLogout is invoked.
@@ -23,41 +24,42 @@ class Nav extends Component {
   };
 
   render() {
-    const { authedUser, users } = this.props;
+    const { authedUser, classes, users } = this.props;
 
     return (
       <div>
         {/* the Toolbar component is nested inside the AppBar component 
                 to display the navigation links in a row as opposed to in a column */}
-        <AppBar className="app-bar" position="sticky" style={{ background: '#ffffff' }}>
+        <AppBar className={classes.appBar}>
           <Toolbar>
-            <ul className="navigation-links">
+            <ul className={classes.navigationLinks}>
               <li>
-                <NavLink exact to="/">
+                <NavLink className={classes.navigationLink} activeClassName={classes.isActive} exact to="/">
                   Home
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/add">New Poll</NavLink>
+                <NavLink className={classes.navigationLink} activeClassName={classes.isActive} exact to="/add">New Poll</NavLink>
               </li>
-              <li>
-                <NavLink to="/leaderboard">Leader Board</NavLink>
+              <li className={classes.navigationLink}>
+                <NavLink className={classes.navigationLink} activeClassName={classes.isActive} exact to="/leaderboard">Leader Board</NavLink>
               </li>
             </ul>
-            <div className="right-menu"> </div>
+            <div className={classes.rightMenu}> </div>
             <span>
               <Avatar alt={users[authedUser].name} src={users[authedUser].avatarURL} size={100} />
             </span>
-            <p className="navigation-username">{users[authedUser].name}</p>
+            <p className={classes.navigationUsername}>{users[authedUser].name}</p>
             <Button
+              className={classes.logoutButton}
               endIcon={<ExitAppIcon />}
               onClick={this.handleLogout}
-              style={{ textTransform: 'none' }}
             >
               Logout
             </Button>
           </Toolbar>
         </AppBar>
+        <Toolbar />
       </div>
     );
   }
@@ -70,4 +72,4 @@ function mapStateToProps({ authedUser, users }) {
   };
 }
 
-export default connect(mapStateToProps)(Nav);
+export default connect(mapStateToProps)(withStyles(styles)(Nav));

@@ -2,6 +2,10 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export const useStyles = makeStyles((theme) => ({
   root: {
+    maxWidth: '600px',
+    justifyContent: 'flex-end',
+    alignContent: 'center',
+    margin: 'auto',
     padding: '10px',
   },
 
@@ -11,11 +15,16 @@ export const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
+    margin: 'auto',
+  },
+
+  cardSpacing: {
+    marginTop: "20px",
   },
 
   header: {
     fontSize: '1.25em',
-    backgroundColor: '#f3f4f5',
+    backgroundColor: '#ecf6dd',
     padding: '1em',
   },
 
@@ -23,18 +32,20 @@ export const useStyles = makeStyles((theme) => ({
     textAlign: 'left',
   },
 
-  toolbar: {
-    maxWidth: '600px',
-    justifyContent: 'flex-end',
-    alignContent: 'center',
-    margin: 'auto',
-    padding: '8px',
-    ...theme.mixins.toolbar,
+  submitButton: {
+    backgroundColor: '#043d6c',
+    color: "white",
+    margin: '10px', 
+    textTransform: 'none', 
   },
 
   tabLabel: {
     textTransform: 'none',
     fontSize: '1.3em',
+  },
+
+  tabIndicator: {
+    color: 'white',
   },
 
   userSelected: {

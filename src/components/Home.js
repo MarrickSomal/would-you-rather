@@ -20,14 +20,15 @@ function Home(props) {
   const { userPollData } = props;
 
   return (
-    <div className={classes.toolbar}>
+    <div className={classes.root}>
       <Tabs
+        className={classes.tabIndicator}
         onChange={handleChange}
         value={value}
         variant="fullWidth"
         TabIndicatorProps={{
           style: {
-            backgroundColor: 'rgb(33, 182, 174)',
+            backgroundColor: '#043d6c',
             height: '10px',
             top: '44px',
           },

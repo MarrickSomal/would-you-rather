@@ -8,10 +8,11 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardHeader from '@material-ui/core/CardHeader';
 import TextField from '@material-ui/core/TextField';
-
-import '../styles/createnewpoll.css';
+import { useStyles } from '../styles/NewPoll';
 
 function CreateNewPoll(props) {
+  const classes = useStyles();
+
   const [optionOne, setOptionOne] = React.useState('');
   const [optionTwo, setOptionTwo] = React.useState('');
 
@@ -33,12 +34,11 @@ function CreateNewPoll(props) {
   };
 
   return (
-    <div className="newpoll">
+    <div className={classes.newPoll}>
       <Card>
         <CardHeader
-          className="header"
+          className={classes.header}
           title="Create a New Poll"
-          style={{ backgroundColor: '#f3f4f5' }}
         ></CardHeader>
         <CardContent>
           <p>Complete the question:</p>
@@ -54,7 +54,7 @@ function CreateNewPoll(props) {
               value={optionOne}
               variant="outlined"
             />
-            <p className="or-divider">OR</p>
+            <p className={classes.orDivider}>OR</p>
             <TextField
               fullWidth
               label="Option two"
@@ -67,13 +67,9 @@ function CreateNewPoll(props) {
         </CardContent>
         <CardActions>
           <Button
-            color="secondary"
+            className={classes.submitButton}
             fullWidth
             onClick={handleSubmit}
-            style={{
-              textTransform: 'none',
-              backgroundColor: '#21b6ae',
-            }}
             variant="contained"
           >
             Submit

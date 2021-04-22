@@ -7,12 +7,12 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardHeader from '@material-ui/core/CardHeader';
 import FormControl from '@material-ui/core/FormControl';
+import Grid from '@material-ui/core/Grid';
 import InputLabel from '@material-ui/core/InputLabel';
-
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
-
-import '../styles/login.css';
+import { withStyles } from '@material-ui/core/styles';
+import {styles} from '../styles/Login';
 
 class Login extends Component {
   state = {
@@ -47,21 +47,31 @@ class Login extends Component {
 
   render() {
     const { username } = this.state;
-    const { users } = this.props;
+    const { classes, users } = this.props;
 
     return (
-      <div className="login-container">
-        <Card className="login-card">
+      <div className={classes.pageSizing}>
+         <div className={classes.page}>
+         <Grid
+            container
+            direction="row"
+            justify="center"
+            alignItems="center"
+            className={classes.content}
+          >
+            <Grid item xs={10}>
+            <form className={classes.formTag}>
+        <Card className={classes.formContainer}>
           <CardHeader
-            className="header"
+            className={classes.header}
             title="Welcome to the Would You Rather App!"
-            style={{ backgroundColor: '#f3f4f5' }}
             subheader="Please sign in to continue"
           ></CardHeader>
           <CardContent>
+            <img alt="" src={"/images/avatars/animals.png"} height="300" centred />
             <FormControl fullWidth>
-              <InputLabel>Select a User to begin</InputLabel>
-              <Select value={username} onChange={this.handleChange}>
+              <InputLabel shrink={false}> {username=== '' ? 'Select a User to begin' : ""}</InputLabel>
+              <Select value={username} onChange={this.handleChange} className={classes.select}>
                 {Object.keys(users).map((user) => (
                   <MenuItem value={user} key={user}>
                     {users[user].name}
@@ -71,20 +81,21 @@ class Login extends Component {
             </FormControl>
           </CardContent>
           <Button
+            className={classes.loginButton}
             color="secondary"
             disabled={username === ''}
             fullWidth
             onClick={this.handleSubmit}
-            style={{
-              textTransform: 'none',
-              backgroundColor: '#21b6ae',
-            }}
             variant="contained"
           >
             Login
           </Button>
         </Card>
-      </div>
+        </form>
+            </Grid>
+            </Grid>
+            </div>
+         </div>
     );
   }
 }
@@ -95,4 +106,4 @@ function mapStateToProps({ users }) {
   };
 }
 
-export default connect(mapStateToProps)(Login);
+export default connect(mapStateToProps)(withStyles(styles)(Login));

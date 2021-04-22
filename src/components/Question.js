@@ -7,6 +7,7 @@ import FormControl from '@material-ui/core/FormControl';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
+import Toolbar from '@material-ui/core/Toolbar';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -40,7 +41,7 @@ function Question(props) {
   const disabled = value === '' ? true : false;
 
   return (
-    <div className={classes.toolbar}>
+    <div>
       <div className={classes.root}>
         <Card>
           <div className={classes.header}>{author.name} asks:</div>
@@ -68,11 +69,9 @@ function Question(props) {
                       />
                     </RadioGroup>
                     <Button
-                      className="submit-button"
+                      className={classes.submitButton}
                       type="submit"
                       variant="contained"
-                      color="primary"
-                      style={{ margin: '10px', textTransform: 'none' }}
                       disabled={disabled}
                     >
                       Submit

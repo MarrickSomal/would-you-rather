@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 import Button from '@material-ui/core/Button';
-
-import '../styles/pollpreview.css';
+import { withStyles } from '@material-ui/core/styles';
+import {styles} from '../styles/PollPreview';
 
 class PollPreview extends Component {
   render() {
-    const { author, question, unansweredPolls } = this.props;
+    const { author, classes, question, unansweredPolls } = this.props;
     const buttonName = unansweredPolls === true ? 'Answer Poll' : 'Results';
     const buttonLink =
       unansweredPolls === true
@@ -16,8 +16,8 @@ class PollPreview extends Component {
 
     return (
       <div>
-        <h5>Would you rather</h5>
-        <p>
+        <div className={classes.question}>Would you rather</div>
+        <p className={classes.questionText}>
           {question.optionOne.text}
           <br />
           or...
@@ -30,15 +30,12 @@ class PollPreview extends Component {
               question,
             },
           }}
+          className={classes.answerPollLink}
           style={{ textDecoration: 'none' }}
         >
           <Button
-            color="secondary"
+            className={classes.answerPollButton}
             fullWidth
-            style={{
-              textTransform: 'none',
-              backgroundColor: '#21b6ae',
-            }}
             variant="contained"
           >
             {buttonName}
@@ -49,4 +46,4 @@ class PollPreview extends Component {
   }
 }
 
-export default PollPreview;
+export default (withStyles(styles)(PollPreview));
