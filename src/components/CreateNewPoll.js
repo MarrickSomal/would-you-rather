@@ -33,6 +33,8 @@ function CreateNewPoll(props) {
     props.history.push('/');
   };
 
+  const disabled = (optionOne && optionTwo)  === '' ? true : false;
+
   return (
     <div className={classes.newPoll}>
       <Card>
@@ -71,6 +73,7 @@ function CreateNewPoll(props) {
             fullWidth
             onClick={handleSubmit}
             variant="contained"
+            disabled={disabled}
           >
             Submit
           </Button>
