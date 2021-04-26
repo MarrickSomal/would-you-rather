@@ -33,15 +33,12 @@ function CreateNewPoll(props) {
     props.history.push('/');
   };
 
-  const disabled = (optionOne && optionTwo)  === '' ? true : false;
+  const disabled = (optionOne && optionTwo) === '' ? true : false;
 
   return (
     <div className={classes.newPoll}>
       <Card>
-        <CardHeader
-          className={classes.header}
-          title="Create a New Poll"
-        ></CardHeader>
+        <CardHeader className={classes.header} title="Create a New Poll"></CardHeader>
         <CardContent>
           <p>Complete the question:</p>
           <p>

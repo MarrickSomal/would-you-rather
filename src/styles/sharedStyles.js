@@ -19,7 +19,7 @@ export const useStyles = makeStyles((theme) => ({
   },
 
   cardSpacing: {
-    marginTop: "20px",
+    marginTop: '20px',
   },
 
   header: {
@@ -40,9 +40,9 @@ export const useStyles = makeStyles((theme) => ({
 
   submitButton: {
     backgroundColor: '#043d6c',
-    color: "white",
-    margin: '10px', 
-    textTransform: 'none', 
+    color: 'white',
+    margin: '10px',
+    textTransform: 'none',
   },
 
   tabLabel: {

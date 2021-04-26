@@ -13,31 +13,31 @@ function Leaderboard(props) {
   const { userData } = props;
 
   return (
-      <div className={classes.root}>
-        {userData.map((user, ix) => {
-          return (
-            <Card key={user.id} className={classes.cardSpacing}>
-              <div className={classes.header}>
-                {ix + 1}. {user.name}
-              </div>
-              <Grid container>
-                <Grid item xs={4} className={classes.card}>
-                  <CardContent>
-                    <img alt="" src={user.avatarURL} width="119" height="119" />
-                  </CardContent>
-                </Grid>
-                <Grid item xs={6} className={classes.card}>
-                  <CardContent>
-                    <p>Answered questions: {user.answerCount}</p>
-                    <p>Created questions: {user.questionCount}</p>
-                    <p>Score: {user.totalContribution}</p>
-                  </CardContent>
-                </Grid>
+    <div className={classes.root}>
+      {userData.map((user, ix) => {
+        return (
+          <Card key={user.id} className={classes.cardSpacing}>
+            <div className={classes.header}>
+              {ix + 1}. {user.name}
+            </div>
+            <Grid container>
+              <Grid item xs={4} className={classes.card}>
+                <CardContent>
+                  <img alt="" src={user.avatarURL} width="119" height="119" />
+                </CardContent>
               </Grid>
-            </Card>
-          );
-        })}
-      </div>
+              <Grid item xs={6} className={classes.card}>
+                <CardContent>
+                  <p>Answered questions: {user.answerCount}</p>
+                  <p>Created questions: {user.questionCount}</p>
+                  <p>Score: {user.totalContribution}</p>
+                </CardContent>
+              </Grid>
+            </Grid>
+          </Card>
+        );
+      })}
+    </div>
   );
 }
 

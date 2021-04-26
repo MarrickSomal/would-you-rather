@@ -10,7 +10,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import ExitAppIcon from '@material-ui/icons/ExitToApp';
 
 import { withStyles } from '@material-ui/core/styles';
-import {styles} from '../styles/Nav';
+import { styles } from '../styles/Nav';
 
 class Nav extends Component {
   /*When the user clicks on the Logout button handleLogout is invoked.
@@ -34,15 +34,34 @@ class Nav extends Component {
           <Toolbar>
             <ul className={classes.navigationLinks}>
               <li>
-                <NavLink className={classes.navigationLink} activeClassName={classes.isActive} exact to="/">
+                <NavLink
+                  className={classes.navigationLink}
+                  activeClassName={classes.isActive}
+                  exact
+                  to="/"
+                >
                   Home
                 </NavLink>
               </li>
               <li>
-                <NavLink className={classes.navigationLink} activeClassName={classes.isActive} exact to="/add">New Poll</NavLink>
+                <NavLink
+                  className={classes.navigationLink}
+                  activeClassName={classes.isActive}
+                  exact
+                  to="/add"
+                >
+                  New Poll
+                </NavLink>
               </li>
               <li className={classes.navigationLink}>
-                <NavLink className={classes.navigationLink} activeClassName={classes.isActive} exact to="/leaderboard">Leader Board</NavLink>
+                <NavLink
+                  className={classes.navigationLink}
+                  activeClassName={classes.isActive}
+                  exact
+                  to="/leaderboard"
+                >
+                  Leader Board
+                </NavLink>
               </li>
             </ul>
             <div className={classes.rightMenu}> </div>

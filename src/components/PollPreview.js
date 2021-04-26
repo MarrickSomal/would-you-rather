@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
-import {styles} from '../styles/PollPreview';
+import { styles } from '../styles/PollPreview';
 
 class PollPreview extends Component {
   render() {
@@ -33,11 +33,7 @@ class PollPreview extends Component {
           className={classes.answerPollLink}
           style={{ textDecoration: 'none' }}
         >
-          <Button
-            className={classes.answerPollButton}
-            fullWidth
-            variant="contained"
-          >
+          <Button className={classes.answerPollButton} fullWidth variant="contained">
             {buttonName}
           </Button>
         </Link>
@@ -46,4 +42,4 @@ class PollPreview extends Component {
   }
 }
 
-export default (withStyles(styles)(PollPreview));
+export default withStyles(styles)(PollPreview);

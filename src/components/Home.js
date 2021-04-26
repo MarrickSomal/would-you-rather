@@ -43,17 +43,15 @@ function Home(props) {
         ))}
       </TabPanel>
       <TabPanel label="Answered" value={value} index={1}>
-        {(userPollData.unansweredPolls.length===0)?
-        <div className={classes.noAnswersText}>
-          You haven't answered any questions yet! 
-        </div>
-        :
-        <div>
-          {userPollData.unansweredPolls.map((question) => (
-          <UserCard key={question.id} questionId={question.id} unansweredPolls={false} />
-        ))}
-        </div>
-      }
+        {userPollData.unansweredPolls.length === 0 ? (
+          <div className={classes.noAnswersText}>You haven't answered any questions yet!</div>
+        ) : (
+          <div>
+            {userPollData.unansweredPolls.map((question) => (
+              <UserCard key={question.id} questionId={question.id} unansweredPolls={false} />
+            ))}
+          </div>
+        )}
       </TabPanel>
     </div>
   );

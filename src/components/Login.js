@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setAuthedUser } from '../actions/authedUser';
+import ResetDialog from './ResetDialog';
 
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
@@ -12,7 +13,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import { withStyles } from '@material-ui/core/styles';
-import {styles} from '../styles/Login';
+import { styles } from '../styles/Login';
 
 class Login extends Component {
   state = {
@@ -51,8 +52,8 @@ class Login extends Component {
 
     return (
       <div className={classes.pageSizing}>
-         <div className={classes.page}>
-         <Grid
+        <div className={classes.page}>
+          <Grid
             container
             direction="row"
             justify="center"
@@ -60,42 +61,55 @@ class Login extends Component {
             className={classes.content}
           >
             <Grid item xs={10}>
-            <form className={classes.formTag}>
-        <Card className={classes.formContainer}>
-          <CardHeader
-            className={classes.header}
-            title="Welcome to the Would You Rather App!"
-            subheader="Please sign in to continue"
-          ></CardHeader>
-          <CardContent>
-            <img alt="" src={"/images/avatars/animals.png"} height="300" centred />
-            <FormControl fullWidth>
-              <InputLabel shrink={false}> {username=== '' ? 'Select a User to begin' : ""}</InputLabel>
-              <Select value={username} onChange={this.handleChange} className={classes.select}>
-                {Object.keys(users).map((user) => (
-                  <MenuItem value={user} key={user}>
-                    {users[user].name}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          </CardContent>
-          <Button
-            className={classes.loginButton}
-            color="secondary"
-            disabled={username === ''}
-            fullWidth
-            onClick={this.handleSubmit}
-            variant="contained"
-          >
-            Login
-          </Button>
-        </Card>
-        </form>
+              <form className={classes.formTag}>
+                <Card className={classes.formContainer}>
+                  <CardHeader
+                    className={classes.header}
+                    title="Welcome to the Would You Rather App!"
+                    subheader="Please sign in or reset your current game"
+                  ></CardHeader>
+                  <CardContent>
+                    <img alt="" src={'/images/avatars/animals.png'} height="300" centred />
+                    <FormControl fullWidth>
+                      <InputLabel shrink={false}>
+                        {' '}
+                        {username === '' ? 'Select a User to begin' : ''}
+                      </InputLabel>
+                      <Select
+                        value={username}
+                        onChange={this.handleChange}
+                        className={classes.select}
+                      >
+                        {Object.keys(users).map((user) => (
+                          <MenuItem value={user} key={user}>
+                            {users[user].name}
+                          </MenuItem>
+                        ))}
+                      </Select>
+                    </FormControl>
+                    <Grid container className={classes.buttonGrid} spacing={3}>
+                      <Grid item xs={6}>
+                        <Button
+                          className={classes.loginButton}
+                          disabled={username === ''}
+                          fullWidth
+                          onClick={this.handleSubmit}
+                          variant="contained"
+                        >
+                          Sign in
+                        </Button>
+                      </Grid>
+                      <Grid item xs={6}>
+                        <ResetDialog />
+                      </Grid>
+                    </Grid>
+                  </CardContent>
+                </Card>
+              </form>
             </Grid>
-            </Grid>
-            </div>
-         </div>
+          </Grid>
+        </div>
+      </div>
     );
   }
 }
