@@ -15,7 +15,6 @@ function Home(props) {
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
-    console.log(userPollData.unansweredPolls)
   };
 
   const { userPollData } = props;
