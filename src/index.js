@@ -5,7 +5,7 @@ import App from './components/App';
 import { BrowserRouter } from 'react-router-dom';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import reducer from './reducers/index';
+import reducers from './reducers/index';
 import middleware from './middleware/index';
 import throttle from 'lodash.throttle';
 
@@ -13,12 +13,12 @@ const persistedState = localStorage.getItem('gameData')
   ? JSON.parse(localStorage.getItem('gameData'))
   : {};
 
-const store = createStore(reducer, persistedState, middleware);
+const store = createStore(reducers, persistedState, middleware);
 
 store.subscribe(
   throttle(() => {
     localStorage.setItem('gameData', JSON.stringify(store.getState()));
-  }, 1000)
+  }, 5000)
 );
 
 ReactDOM.render(

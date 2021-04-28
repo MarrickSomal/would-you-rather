@@ -17,8 +17,10 @@ via the action creators receiveQuestions and receiveUsers.
 
 export function handleInitialData() {
   return (dispatch) => {
-    if (localStorage.getItem('reduxState') !== null) {
-    } else {
+    if (localStorage.getItem('gameData') !== null) {
+      console.log("help")
+    } 
+    else {
       return getInitialData().then(({ users, questions }) => {
         dispatch(receiveQuestions(questions));
         dispatch(receiveUsers(users));
@@ -26,3 +28,12 @@ export function handleInitialData() {
     }
   };
 }
+
+export function handleResetToInitialData() {
+  return (dispatch) => {
+      return getInitialData().then(({ users, questions }) => {
+        dispatch(receiveQuestions(questions));
+        dispatch(receiveUsers(users));
+      });
+    }
+  };

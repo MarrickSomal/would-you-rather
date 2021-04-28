@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { resetApp } from '../actions/users';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -13,7 +15,7 @@ function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
-function ResetDialog() {
+const ResetDialog = (props) => {
   const classes = useStyles();
 
   const [open, setOpen] = useState(false);
@@ -29,7 +31,7 @@ function ResetDialog() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    localStorage.removeItem('gameData');
+    props.dispatch(resetApp())
     setOpen(false);
     handleMessageOpen();
   };
@@ -88,4 +90,4 @@ function ResetDialog() {
   );
 }
 
-export default ResetDialog;
+export default connect()(ResetDialog);

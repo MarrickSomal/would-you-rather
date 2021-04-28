@@ -1,7 +1,7 @@
-import { createStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
-export const styles = (theme) =>
-  createStyles({
+export const  useStyles = makeStyles((theme) => ({
+
     buttonGrid: {
       display: 'flex',
       flexDirection: 'row',
@@ -63,4 +63,4 @@ export const styles = (theme) =>
         borderColor: '#043d6c',
       },
     },
-  });
+}));

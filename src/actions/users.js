@@ -1,7 +1,10 @@
+import { handleResetToInitialData } from "./shared";
+
 //Action type
 export const RECEIVE_USERS = 'RECEIVE_USERS';
 export const ADD_ANSWER_TO_USER = 'ADD_ANSWER_TO_USER';
 export const ADD_QUESTION_TO_USER = 'ADD_QUESTION_TO_USER';
+export const RESET_APP = 'RESET_APP';
 
 //Action creator
 export function receiveUsers(users) {
@@ -27,3 +30,17 @@ export function addQuestionToUser({ id, author }) {
     author,
   };
 }
+
+export function resetApp(){
+  return dispatch => {
+    dispatch(resetData())
+    dispatch(handleResetToInitialData())
+}
+}
+
+export function resetData() {
+  return {
+    type: RESET_APP,
+  }
+}
+

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { setAuthedUser } from '../actions/authedUser';
 import ResetDialog from './ResetDialog';
@@ -12,43 +12,28 @@ import Grid from '@material-ui/core/Grid';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
-import { withStyles } from '@material-ui/core/styles';
-import { styles } from '../styles/Login';
+import {useStyles} from '../styles/Login';
 
-class Login extends Component {
-  state = {
-    username: '',
+
+const Login = (props) => {
+
+  const classes = useStyles();
+
+  const [username, setUsername] = useState('');
+
+  const handleChange = (event) => {
+    const name = event.target.value;
+    setUsername(name);
   };
 
-  /* 
-        When the user enters selects a username from the input field
-        the onChange event listener invokes the handleChange() function.
-        handleChange() then calls setState(), merging in the new state 
-        of username, causing the component to rerender 
-      */
-
-  handleChange = (event) => {
-    const username = event.target.value;
-
-    this.setState(() => ({ username }));
-  };
-
-  handleSubmit = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
-
-    const { username } = this.state;
-    const { dispatch, id } = this.props;
-
+    const { dispatch, id } = props;
     dispatch(setAuthedUser(username, id));
-
-    this.setState(() => ({
-      username: '',
-    }));
+    setUsername('');
   };
 
-  render() {
-    const { username } = this.state;
-    const { classes, users } = this.props;
+    const { users } = props;
 
     return (
       <div className={classes.pageSizing}>
@@ -77,7 +62,7 @@ class Login extends Component {
                       </InputLabel>
                       <Select
                         value={username}
-                        onChange={this.handleChange}
+                        onChange={handleChange}
                         className={classes.select}
                       >
                         {Object.keys(users).map((user) => (
@@ -93,14 +78,14 @@ class Login extends Component {
                           className={classes.loginButton}
                           disabled={username === ''}
                           fullWidth
-                          onClick={this.handleSubmit}
+                          onClick={handleSubmit}
                           variant="contained"
                         >
                           Sign in
                         </Button>
                       </Grid>
                       <Grid item xs={6}>
-                        <ResetDialog />
+                        <ResetDialog/>
                       </Grid>
                     </Grid>
                   </CardContent>
@@ -112,7 +97,6 @@ class Login extends Component {
       </div>
     );
   }
-}
 
 function mapStateToProps({ users }) {
   return {
@@ -120,4 +104,4 @@ function mapStateToProps({ users }) {
   };
 }
 
-export default connect(mapStateToProps)(withStyles(styles)(Login));
+export default connect(mapStateToProps)(Login);

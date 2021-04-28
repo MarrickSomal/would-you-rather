@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { useEffect, useState, Fragment } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { handleInitialData } from '../actions/shared';
 import { connect } from 'react-redux';
@@ -16,13 +16,15 @@ import Grid from '@material-ui/core/Grid';
 
 import '../styles/App.css';
 
-class App extends Component {
-  componentDidMount() {
-    this.props.dispatch(handleInitialData());
-  }
+const App = (props) => {
 
-  render() {
-    const { authedUser } = this.props;
+  useEffect(() => {
+    props.dispatch(handleInitialData());
+    console.log(props.questions)
+  }, []);
+
+    const { authedUser}  = props
+
     return (
       <Router>
         <div className="App">
@@ -32,7 +34,7 @@ class App extends Component {
             <Route
               render={() => (
                 <Grid className="login-container">
-                  <Login />
+                  <Login/>
                 </Grid>
               )}
             />
@@ -53,15 +55,15 @@ class App extends Component {
       </Router>
     );
   }
-}
 
 /* authedUser state, from the store, is passed
 as a parameter to allow authedUser to be used 
 as a property by the App component */
 
-function mapStateToProps({ authedUser }) {
+function mapStateToProps({ authedUser, questions }) {
   return {
     authedUser,
+    questions
   };
 }
 
