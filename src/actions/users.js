@@ -1,4 +1,4 @@
-import { handleResetToInitialData } from "./shared";
+import { handleResetToInitialData } from './shared';
 
 //Action type
 export const RECEIVE_USERS = 'RECEIVE_USERS';
@@ -31,16 +31,15 @@ export function addQuestionToUser({ id, author }) {
   };
 }
 
-export function resetApp(){
-  return dispatch => {
-    dispatch(resetData())
-    dispatch(handleResetToInitialData())
-}
+export function resetApp() {
+  return (dispatch) => {
+    dispatch(resetData());
+    dispatch(handleResetToInitialData());
+  };
 }
 
 export function resetData() {
   return {
     type: RESET_APP,
-  }
+  };
 }
-

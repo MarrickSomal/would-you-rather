@@ -19,7 +19,7 @@ export const styles = (theme) =>
       color: '#043d6c',
       fontSize: '1em',
       textDecoration: 'none',
-      textTransform: "none",
+      textTransform: 'none',
     },
 
     navigationLinks: {

@@ -31,7 +31,7 @@ const ResetDialog = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    props.dispatch(resetApp())
+    props.dispatch(resetApp());
     setOpen(false);
     handleMessageOpen();
   };
@@ -88,6 +88,6 @@ const ResetDialog = (props) => {
       </Snackbar>
     </div>
   );
-}
+};
 
 export default connect()(ResetDialog);

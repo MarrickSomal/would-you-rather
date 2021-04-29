@@ -13,7 +13,6 @@ import { withStyles } from '@material-ui/core/styles';
 import { styles } from '../styles/Nav';
 
 const Nav = (props) => {
-
   const history = useHistory();
 
   /*When the user clicks on the Logout button handleLogout is invoked.
@@ -24,67 +23,67 @@ const Nav = (props) => {
   const handleLogout = (e) => {
     e.preventDefault();
     props.dispatch(setAuthedUser(null));
-    history.push("/");
+    history.push('/');
   };
 
-    const { authedUser, classes, users } = props;
+  const { authedUser, classes, users } = props;
 
-    return (
-      <div>
-        {/* the Toolbar component is nested inside the AppBar component 
+  return (
+    <div>
+      {/* the Toolbar component is nested inside the AppBar component 
                 to display the navigation links in a row as opposed to in a column */}
-        <AppBar className={classes.appBar}>
-          <Toolbar>
-            <ul className={classes.navigationLinks}>
-              <li>
-                <NavLink
-                  className={classes.navigationLink}
-                  activeClassName={classes.isActive}
-                  exact
-                  to="/home"
-                >
-                  Home
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  className={classes.navigationLink}
-                  activeClassName={classes.isActive}
-                  exact
-                  to="/add"
-                >
-                  New Poll
-                </NavLink>
-              </li>
-              <li className={classes.navigationLink}>
-                <NavLink
-                  className={classes.navigationLink}
-                  activeClassName={classes.isActive}
-                  exact
-                  to="/leaderboard"
-                >
-                  Leader Board
-                </NavLink>
-              </li>
-            </ul>
-            <div className={classes.rightMenu}> </div>
-            <span>
-              <Avatar alt={users[authedUser].name} src={users[authedUser].avatarURL} size={100} />
-            </span>
-            <p className={classes.navigationUsername}>{users[authedUser].name}</p>
-              <Button
-                className={classes.logoutLink}
-                endIcon={<ExitAppIcon className={classes.logoutButton}/>}
-                onClick={handleLogout}
+      <AppBar className={classes.appBar}>
+        <Toolbar>
+          <ul className={classes.navigationLinks}>
+            <li>
+              <NavLink
+                className={classes.navigationLink}
+                activeClassName={classes.isActive}
+                exact
+                to="/home"
               >
-                  Logout
-              </Button>
-          </Toolbar>
-        </AppBar>
-        <Toolbar />
-      </div>
-    );
-  }
+                Home
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                className={classes.navigationLink}
+                activeClassName={classes.isActive}
+                exact
+                to="/add"
+              >
+                New Poll
+              </NavLink>
+            </li>
+            <li className={classes.navigationLink}>
+              <NavLink
+                className={classes.navigationLink}
+                activeClassName={classes.isActive}
+                exact
+                to="/leaderboard"
+              >
+                Leader Board
+              </NavLink>
+            </li>
+          </ul>
+          <div className={classes.rightMenu}> </div>
+          <span>
+            <Avatar alt={users[authedUser].name} src={users[authedUser].avatarURL} size={100} />
+          </span>
+          <p className={classes.navigationUsername}>{users[authedUser].name}</p>
+          <Button
+            className={classes.logoutLink}
+            endIcon={<ExitAppIcon className={classes.logoutButton} />}
+            onClick={handleLogout}
+          >
+            Logout
+          </Button>
+        </Toolbar>
+      </AppBar>
+      <Toolbar />
+    </div>
+  );
+};
 
 function mapStateToProps({ authedUser, users }) {
   return {

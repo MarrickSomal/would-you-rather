@@ -29,9 +29,9 @@ export function handleInitialData() {
 
 export function handleResetToInitialData() {
   return (dispatch) => {
-      return getInitialData().then(({ users, questions }) => {
-        dispatch(receiveQuestions(questions));
-        dispatch(receiveUsers(users));
-      });
-    }
+    return getInitialData().then(({ users, questions }) => {
+      dispatch(receiveQuestions(questions));
+      dispatch(receiveUsers(users));
+    });
   };
+}

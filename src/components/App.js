@@ -15,42 +15,37 @@ import Question from './Question';
 import '../styles/App.css';
 
 const App = (props) => {
-
   useEffect(() => {
     props.dispatch(handleInitialData());
-    console.log(props.questions)
+    console.log(props.questions);
   }, []);
 
-    const { authedUser}  = props
+  const { authedUser } = props;
 
-    return (
-      <Router>
-        <div className="App">
-          {/*if an authenticated User has not been selected show the Login screen, 
+  return (
+    <Router>
+      <div className="App">
+        {/*if an authenticated User has not been selected show the Login screen, 
           else show the Home screen*/}
-          {authedUser === null ? (
-            <Route exact path="/"
-              render={() => (
-                  <Login/>
-              )}
-            />
-          ) : (
-            <Fragment>
-              <Nav />
-              <Switch>
-                <Route exact path="/home" component={Home} />
-                <Route path="/add" component={CreateNewPoll} />
-                <Route path="/leaderboard" component={Leaderboard} />
-                <Route path="/question/:id/result" component={Result} />
-                <Route path="/question/:id" component={Question} />
-                <Route component={PageNotFound} />
-              </Switch>
-            </Fragment>
-          )}
-        </div>
-      </Router>
-    );
-  }
+        {authedUser === null ? (
+          <Route exact path="/" render={() => <Login />} />
+        ) : (
+          <Fragment>
+            <Nav />
+            <Switch>
+              <Route exact path="/home" component={Home} />
+              <Route path="/add" component={CreateNewPoll} />
+              <Route path="/leaderboard" component={Leaderboard} />
+              <Route path="/question/:id/result" component={Result} />
+              <Route path="/question/:id" component={Question} />
+              <Route component={PageNotFound} />
+            </Switch>
+          </Fragment>
+        )}
+      </div>
+    </Router>
+  );
+};
 
 /* authedUser state, from the store, is passed
 as a parameter to allow authedUser to be used 
@@ -59,7 +54,7 @@ as a property by the App component */
 function mapStateToProps({ authedUser, questions }) {
   return {
     authedUser,
-    questions
+    questions,
   };
 }
 
