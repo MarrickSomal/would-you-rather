@@ -14,9 +14,7 @@ const rootReducer = (state, action) => {
   if (action.type === 'RESET_APP') {
     localStorage.removeItem('gameData');
     state = undefined;
-    console.log("testing")
   }
-
   return appReducer(state, action);
 };
 

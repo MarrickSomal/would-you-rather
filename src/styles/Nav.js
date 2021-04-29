@@ -13,8 +13,13 @@ export const styles = (theme) =>
 
     logoutButton: {
       color: '#043d6c',
-      fontSize: '1em',
-      textTransform: 'none',
+    },
+
+    logoutLink: {
+      color: '#043d6c',
+      fontSize: '1.2em',
+      textDecoration: 'none',
+      textTransform: "none",
     },
 
     navigationLinks: {

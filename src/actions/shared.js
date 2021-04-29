@@ -18,9 +18,7 @@ via the action creators receiveQuestions and receiveUsers.
 export function handleInitialData() {
   return (dispatch) => {
     if (localStorage.getItem('gameData') !== null) {
-      console.log("help")
-    } 
-    else {
+    } else {
       return getInitialData().then(({ users, questions }) => {
         dispatch(receiveQuestions(questions));
         dispatch(receiveUsers(users));

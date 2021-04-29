@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Fragment } from 'react';
+import React, { useEffect, Fragment } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { handleInitialData } from '../actions/shared';
 import { connect } from 'react-redux';
@@ -11,8 +11,6 @@ import CreateNewPoll from './CreateNewPoll';
 import Leaderboard from './Leaderboard';
 import PageNotFound from './PageNotFound';
 import Question from './Question';
-
-import Grid from '@material-ui/core/Grid';
 
 import '../styles/App.css';
 
@@ -31,19 +29,17 @@ const App = (props) => {
           {/*if an authenticated User has not been selected show the Login screen, 
           else show the Home screen*/}
           {authedUser === null ? (
-            <Route
+            <Route path="/login"
               render={() => (
-                <Grid className="login-container">
                   <Login/>
-                </Grid>
               )}
             />
           ) : (
             <Fragment>
               <Nav />
               <Switch>
+                <Route exact path="/home" component={Home} />
                 <Route path="/add" component={CreateNewPoll} />
-                <Route exact path="/" component={Home} />
                 <Route path="/leaderboard" component={Leaderboard} />
                 <Route path="/question/:id/result" component={Result} />
                 <Route path="/question/:id" component={Question} />

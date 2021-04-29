@@ -30,7 +30,7 @@ function CreateNewPoll(props) {
     const { authedUser } = props;
 
     props.dispatch(handleSaveQuestion(optionOne, optionTwo, authedUser));
-    props.history.push('/');
+    props.history.push('/home');
   };
 
   const disabled = (optionOne && optionTwo) === '' ? true : false;
