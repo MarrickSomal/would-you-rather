@@ -78,7 +78,7 @@ const ResetDialog = (props) => {
       <Snackbar
         open={messageOpen}
         anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-        autoHideDuration={6000}
+        autoHideDuration={4000}
         onClose={handleMessageClose}
         className={classes.snackBar}
       >

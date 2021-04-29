@@ -62,7 +62,7 @@ const Login = (props) => {
                   <CardContent>
                     <img alt="" src={'/images/avatars/animals.png'} height="300" centred />
                     <FormControl fullWidth>
-                      <InputLabel shrink={false}>
+                      <InputLabel className={classes.inputLabel}>
                         {' '}
                         {username === '' ? 'Select a User to begin' : ''}
                       </InputLabel>

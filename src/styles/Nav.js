@@ -8,7 +8,7 @@ export const styles = (theme) =>
     },
 
     isActive: {
-      fontWeight: 500,
+      fontWeight: 600,
     },
 
     logoutButton: {
@@ -17,7 +17,7 @@ export const styles = (theme) =>
 
     logoutLink: {
       color: '#043d6c',
-      fontSize: '1.2em',
+      fontSize: '1em',
       textDecoration: 'none',
       textTransform: "none",
     },

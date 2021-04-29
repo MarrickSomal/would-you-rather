@@ -31,6 +31,11 @@ export const  useStyles = makeStyles((theme) => ({
       backgroundColor: 'transparent',
     },
 
+    inputLabel: {
+      color: '#043d6c',
+      shrink: false
+    },
+
     loginButton: {
       textTransform: 'none',
       backgroundColor: '#043d6c',
