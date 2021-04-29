@@ -29,7 +29,7 @@ const App = (props) => {
           {/*if an authenticated User has not been selected show the Login screen, 
           else show the Home screen*/}
           {authedUser === null ? (
-            <Route path="/login"
+            <Route exact path="/"
               render={() => (
                   <Login/>
               )}

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { setAuthedUser } from '../actions/authedUser';
 import { NavLink, useHistory } from 'react-router-dom';
@@ -24,7 +24,7 @@ const Nav = (props) => {
   const handleLogout = (e) => {
     e.preventDefault();
     props.dispatch(setAuthedUser(null));
-    history.push("/login");
+    history.push("/");
   };
 
     const { authedUser, classes, users } = props;
