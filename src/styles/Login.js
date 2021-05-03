@@ -18,7 +18,7 @@ export const useStyles = makeStyles((theme) => ({
   },
 
   formContainer: {
-    maxHeight: '530px',
+    maxHeight: '565px',
     maxWidth: '500px',
     margin: 'auto',
     padding: '32px',
@@ -39,6 +39,12 @@ export const useStyles = makeStyles((theme) => ({
     textTransform: 'none',
     backgroundColor: '#043d6c',
     color: 'white',
+  },
+
+  loginImage: {
+    width: '80%',
+    height: 'auto',
+    maxWidth: '100%',
   },
 
   page: {

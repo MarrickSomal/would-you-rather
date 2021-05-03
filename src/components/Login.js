@@ -58,7 +58,7 @@ const Login = (props) => {
                   subheader="Please sign in or reset your current game"
                 ></CardHeader>
                 <CardContent>
-                  <img alt="" src={'/images/avatars/animals.png'} height="300" centred />
+                  <img alt="" src={'/images/avatars/animals.png'} className={classes.loginImage} />
                   <FormControl fullWidth>
                     <InputLabel className={classes.inputLabel}>
                       {' '}
