@@ -1,5 +1,5 @@
 import React, { useEffect, Fragment } from 'react';
-import { HashRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { handleInitialData } from '../actions/shared';
 import { connect } from 'react-redux';
 
@@ -23,21 +23,21 @@ const App = (props) => {
   const { authedUser } = props;
 
   return (
-    <Router>
+    <Router  basename={process.env.PUBLIC_URL  + '/'} >
       <div className="App">
         {/*if an authenticated User has not been selected show the Login screen, 
           else show the Home screen*/}
         {authedUser === null ? (
-          <Route exact path="/" render={() => <Login />} />
+          <Route exact path={process.env.PUBLIC_URL + '/'} render={() => <Login />} />
         ) : (
           <Fragment>
             <Nav />
             <Switch>
-              <Route exact path="/home" component={Home} />
-              <Route path="/add" component={CreateNewPoll} />
-              <Route path="/leaderboard" component={Leaderboard} />
-              <Route path="/question/:id/result" component={Result} />
-              <Route path="/question/:id" component={Question} />
+              <Route exact path={process.env.PUBLIC_URL + '/home'} component={Home} />
+              <Route path={process.env.PUBLIC_URL + '/add'} component={CreateNewPoll} />
+              <Route path={process.env.PUBLIC_URL + '/leaderboard'} component={Leaderboard} />
+              <Route path={process.env.PUBLIC_URL + '/question/:id/result'} component={Result} />
+              <Route path={process.env.PUBLIC_URL + '/question/:id'} component={Question} />
               <Route component={PageNotFound} />
             </Switch>
           </Fragment>
