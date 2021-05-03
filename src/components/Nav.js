@@ -1,19 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { setAuthedUser } from '../actions/authedUser';
-import { NavLink, useHistory } from 'react-router-dom';
+import { Link, NavLink, useHistory } from 'react-router-dom';
 
-import AppBar from '@material-ui/core/AppBar';
-import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
-import Toolbar from '@material-ui/core/Toolbar';
+import { AppBar, Avatar, Button, Drawer, IconButton, Toolbar } from '@material-ui/core';
 import ExitAppIcon from '@material-ui/icons/ExitToApp';
+import MenuIcon from "@material-ui/icons/Menu";
 
 import { withStyles } from '@material-ui/core/styles';
 import { styles } from '../styles/Nav';
 
 const Nav = (props) => {
   const history = useHistory();
+  const [drawer, setDrawer] = useState(false);
+  const headersData = [
+    {
+      label: "Home",
+      href: "/home",
+    },
+    {
+      label: "New Poll",
+      href: "/add",
+    },
+    {
+      label: "Leader Board",
+      href: "/leaderboard",
+    },
+  ];
+
+  const handleDrawerOpen = () => {
+    setDrawer(true) 
+  }
+
+  const handleDrawerClose = () => {
+    setDrawer(false) 
+  }
 
   /*When the user clicks on the Logout button handleLogout is invoked.
     handleLogout dispatches the setAuthedUser action which sets the authedUser to null
@@ -35,49 +56,56 @@ const Nav = (props) => {
       <AppBar className={classes.appBar}>
         <Toolbar>
           <ul className={classes.navigationLinks}>
+            {headersData.map(({label, href} ) => (
             <li>
               <NavLink
                 className={classes.navigationLink}
                 activeClassName={classes.isActive}
-                exact
-                to="/home"
+                exact to={href}
               >
-                Home
+                {label}
               </NavLink>
             </li>
-            <li>
-              <NavLink
-                className={classes.navigationLink}
-                activeClassName={classes.isActive}
-                exact
-                to="/add"
-              >
-                New Poll
-              </NavLink>
-            </li>
-            <li className={classes.navigationLink}>
-              <NavLink
-                className={classes.navigationLink}
-                activeClassName={classes.isActive}
-                exact
-                to="/leaderboard"
-              >
-                Leader Board
-              </NavLink>
-            </li>
+            ))}
           </ul>
-          <div className={classes.rightMenu}> </div>
-          <span>
-            <Avatar alt={users[authedUser].name} src={users[authedUser].avatarURL} size={100} />
-          </span>
-          <p className={classes.navigationUsername}>{users[authedUser].name}</p>
-          <Button
-            className={classes.logoutLink}
-            endIcon={<ExitAppIcon className={classes.logoutButton} />}
-            onClick={handleLogout}
-          >
-            Logout
-          </Button>
+          <IconButton className={classes.navigationMenu} onClick={handleDrawerOpen}>
+            <MenuIcon />
+          </IconButton >
+          <Drawer
+          {...{
+            anchor: "left",
+            open: drawer,
+            onClose: handleDrawerClose,
+          }}
+        >
+          <div>
+          {headersData.map(({label, href} ) => (
+            <li>
+              <Link
+                className={classes.navigationLink}
+                activeClassName={classes.isActive}
+                exact to={href}
+              >
+                {label}
+              </Link>
+            </li>
+            ))}
+          </div>
+        </Drawer>
+          <div className={classes.navigationSpacing}></div>
+            <div className={classes.rightMenu}>
+            <span>
+              <Avatar alt={users[authedUser].name} src={users[authedUser].avatarURL} size={100} />
+            </span>
+            <p className={classes.navigationUsername}>{users[authedUser].name}</p>
+            <Button
+              className={classes.logoutLink}
+              endIcon={<ExitAppIcon className={classes.logoutButton} />}
+              onClick={handleLogout}
+            >
+              Logout
+            </Button>
+            </div>
         </Toolbar>
       </AppBar>
       <Toolbar />

@@ -3,8 +3,9 @@ import { createStyles } from '@material-ui/core/styles';
 export const styles = (theme) =>
   createStyles({
     appBar: {
-      position: 'fixed',
       background: '#ecf6dd',
+      padding: 0,
+      position: 'fixed',
     },
 
     isActive: {
@@ -26,20 +27,31 @@ export const styles = (theme) =>
       color: '#043d6c',
       display: 'flex',
       flexDirection: 'row',
-      fontSize: '1.2em',
       listStyle: 'none',
       margin: 0,
+      [theme.breakpoints.down("800")]: {
+        display: "none"
+       },
     },
 
     navigationLink: {
       color: '#043d6c',
+      fontSize: '1.2em',
       position: 'relative',
       marginRight: '16px',
       marginLeft: '16px',
-      paddingLeft: 0,
-      float: 'left',
       textDecoration: 'none',
-      boxShadow: 'none',
+    },
+
+    navigationMenu: {
+      display: "none",
+      [theme.breakpoints.down("800")]: {
+        display: "block"
+       },
+    },
+
+    navigationSpacing: {
+      flexGrow: '0.9',
     },
 
     navigationUsername: {
@@ -51,6 +63,8 @@ export const styles = (theme) =>
     },
 
     rightMenu: {
-      flexGrow: '0.9',
+      display: "flex",
+      flexDirection: "row",
+      alignItems: "center",
     },
   });
