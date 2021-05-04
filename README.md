@@ -1,10 +1,14 @@
 # Would You Rather
 
-Would You Rather is a polling game that presents the user with a series of questions, each question consisting of 2 options - only one option can be selected.
+Would You Rather is a fully responsive and mobile-ready polling game that presents the user with a series of questions.
 
-Any user can answer the questions, with a leaderboard displaying the rank of users based on their contribution to the game.
+Any user can answer a question, with a subsequent results page highlighting their selected option and showing the number of overall votes for each option.
 
-The game is built using React, Redux, React Router, & Redux Thunk.
+Users can also create their own questions, with a leaderboard displaying the rank of users based on their contribution to the game.
+
+Game data is persisted in the browser's localstorage, allowing the user to return to their game with all their saved data at a later time. There is also an option to reset the game to its preset data.
+
+The game is built with React, React Router, Redux and Redux Thunk.
 
 ## Installation
 
