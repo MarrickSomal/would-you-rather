@@ -68,7 +68,7 @@ const Nav = (props) => {
             </li>
             ))}
           </ul>
-          <IconButton className={classes.navigationMenu} onClick={handleDrawerOpen}>
+          <IconButton className={classes.menuButton} onClick={handleDrawerOpen}>
             <MenuIcon />
           </IconButton >
           <Drawer
@@ -79,6 +79,7 @@ const Nav = (props) => {
           }}
         >
           <div>
+          <ul className={classes.menuLinks}>
           {headersData.map(({label, href} ) => (
             <li>
               <Link
@@ -90,6 +91,7 @@ const Nav = (props) => {
               </Link>
             </li>
             ))}
+            </ul>
           </div>
         </Drawer>
           <div className={classes.navigationSpacing}></div>

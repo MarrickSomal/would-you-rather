@@ -23,6 +23,17 @@ export const styles = (theme) =>
       textTransform: 'none',
     },
 
+    menuButton: {
+      display: "none",
+      [theme.breakpoints.down("800")]: {
+        display: "block"
+       },
+    },
+
+    menuLinks: {
+      listStyle: 'none',
+    },
+
     navigationLinks: {
       color: '#043d6c',
       display: 'flex',
@@ -41,13 +52,6 @@ export const styles = (theme) =>
       marginRight: '16px',
       marginLeft: '16px',
       textDecoration: 'none',
-    },
-
-    navigationMenu: {
-      display: "none",
-      [theme.breakpoints.down("800")]: {
-        display: "block"
-       },
     },
 
     navigationSpacing: {

@@ -21,7 +21,7 @@ const store = createStore(reducers, persistedState, middleware);
 store.subscribe(
   throttle(() => {
     localStorage.setItem('gameData', JSON.stringify(store.getState()));
-  }, 5000)
+  }, 1000)
 );
 
 ReactDOM.render(
